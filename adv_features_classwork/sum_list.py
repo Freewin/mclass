@@ -10,7 +10,7 @@ class SumList(object):
 
     def __add__(self, other):
 
-        new_list = [ x + y for x, y in zip(self.mylist, other.mylist)]
+        new_list = [x + y for x, y in zip(self.mylist, other.mylist)]
 
         # The following 4 lines are the same as the line above
         # new_list = []

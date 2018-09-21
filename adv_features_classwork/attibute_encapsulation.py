@@ -3,7 +3,6 @@ class GetSet(object):
     def __init__(self, value):
         self.attrval = value
 
-
     @property
     def var(self):
         print ('getting the var attribute')

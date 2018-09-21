@@ -1,4 +1,4 @@
-from assignments.assignment1 import MaxSizeList
+from assignments.assignment_1.assignment1 import MaxSizeList
 
 a = MaxSizeList(3)
 b = MaxSizeList(1)

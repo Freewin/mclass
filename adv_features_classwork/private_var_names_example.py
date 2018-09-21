@@ -8,20 +8,19 @@ class GetSet(object):
         self._attrval = value
         GetSet.instance_count += 1
 
-
     @property
     def var(self):
-        print ('getting the var attribute')
+        print('getting the var attribute')
         return self._attrval
 
     @var.setter
     def var(self, value):
-        print ('setting the var attribute')
+        print('setting the var attribute')
         self._attrval = value
 
     @var.deleter
     def var(self):
-        print ('deleting the var attribute')
+        print('deleting the var attribute')
         self._attrval = None
 
 

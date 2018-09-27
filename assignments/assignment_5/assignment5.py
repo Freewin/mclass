@@ -1,4 +1,5 @@
 import os
+import pickle
 
 
 class ConfigKeyError(Exception):
@@ -10,23 +11,18 @@ class ConfigKeyError(Exception):
         return 'key "{0}" not found. Available keys: ({1})'.format(self.key, ', '.join(self.keys))
 
 
-class ConfigDict(dict):
+class ConfigPickleDict(dict):
 
-    def __init__(self, filename):
-        self._filename = filename
+    config_dir = '/Users/grojas/Documents/configs'
 
-        # check if file exists
-        try:
-            fh = open(self._filename, 'r')
-        except FileNotFoundError:
-            print("File could not be found")
-
-        for line in fh:
-            line = line.rstrip()
-            (key, value) = line.split('=', 1)
-            dict.__setitem__(self, key, value)
-
-        fh.close()
+    def __init__(self, picklename):
+        self._filename = os.path.join(ConfigPickleDict.config_dir, picklename + '.pickle')
+        if not os.path.isfile(self._filename):
+            with open(self._filename, 'wb') as fh:
+                pickle.dump({}, fh)
+        with open(self._filename, 'rb') as fh:
+            pkl = pickle.load(fh)
+            self.update(pkl)
 
     def __getitem__(self, key):
         if not key in self:
